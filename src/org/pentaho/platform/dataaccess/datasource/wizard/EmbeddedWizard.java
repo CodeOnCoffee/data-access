@@ -118,7 +118,6 @@ public class EmbeddedWizard extends AbstractXulDialogController<Domain> implemen
     }
   }
 
-
   public void init(final AsyncConstructorListener<EmbeddedWizard> constructorListener) {
     asyncConstructorListener = constructorListener;
     setConnectionService(connectionService);
@@ -388,6 +387,8 @@ public class EmbeddedWizard extends AbstractXulDialogController<Domain> implemen
       upload.setAction(GWT.getModuleBaseURL()+ "UploadService"); //$NON-NLS-1$
     }
 
+    initialized = true;
+
     if (asyncConstructorListener != null) {
       asyncConstructorListener.asyncConstructorDone(this);
     }
@@ -505,5 +506,9 @@ public class EmbeddedWizard extends AbstractXulDialogController<Domain> implemen
 
   public void setReportingOnlyValid(boolean reportingOnlyValid){
     this.reportingOnlyValid = reportingOnlyValid;
+  }
+
+  public boolean isInitialized() {
+    return initialized;
   }
 }
